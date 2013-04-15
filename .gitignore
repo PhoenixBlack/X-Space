@@ -1,0 +1,23 @@
+dependencies/include/*
+dependencies/lib/*
+dependencies/source/*
+support/msvs90/Debug/*
+support/msvs90/Debug_dedicated/*
+support/msvs90/Debug_orbiter/*
+support/msvs90/Release/*
+support/msvs90/*.sln
+support/msvs90/*.suo
+support/msvs90/*.ncb
+support/msvs90/*.user
+support/msvs90/Debug (VTune Profiling)/*
+support/msvs90/*XE Results*/*
+plugin/win.xpl
+plugin/lin.xpl
+plugin/mac.xpl
+docs/*/*.log
+docs/*/*.dvi
+docs/*/*.aux
+docs/*/*.toc
+docs/*/*.tps
+docs/*/*.txt
+docs/*/*.ps

@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[a4paper,twoside,12pt]{report}
+\documentclass{report}
+\usepackage[left=3cm,top=3cm,bottom=3cm,right=3cm,nofoot]{geometry}
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+\usepackage{fullpage}
+
+
+%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage{lmodern}
+
+\usepackage{ifthen}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage{setspace}
+\onehalfspacing
+%\singlespacing
+
+%\usepackage{a4wide} %%Smaller margins = more text per page.
+%\usepackage{fancyhdr} %%Fancy headings
+%\usepackage{pst-all}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{verbatim}
+
+\newcommand{\reg}[1]{\texttt{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagestyle{empty}
+
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE eXperimental Space and Aeronautics Group}\\[0.2cm]
+\rule{\linewidth}{0.5mm}\\[3.5cm]
+{\huge \bfseries RV-55x Ares-1/Orion}\\[1.0cm]
+\includegraphics[width=10cm]{../graphics/rv550_cover.eps}\\[2.0cm]
+{\Large Black Phoenix}\\[1.5cm]
+{\Large \today}
+\end{center}
+\end{titlepage}
+
+%% Table of contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{tocdepth}{1}
+\tableofcontents %Table of contents
+\cleardoublepage %The first chapter should start on an odd page.
+
+\pagestyle{plain} %Now display headings: headings / fancy / ...
+
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Quick Reference}
+\input{rv550_reference}
+
+\chapter{Checklists}
+\input{rv550_checklist}
+
+\chapter{On-board Computer Programming}
+\input{rv550_program}
+
+\end{document}
+

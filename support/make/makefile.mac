@@ -1,0 +1,26 @@
+TARGET=../../plugin/mac.xpl
+SOURCES=$(wildcard ../../source/*.c) $(wildcard ../../dependencies/source/*.c)
+OBJECTS=$(SOURCES:.c=.o)
+
+SDKROOT=/Developer/SDKs/MacOSX10.4u.sdk
+OSXC=-arch i386 -arch ppc -universal -mmacosx-version-min=10.4 -isysroot $(SDKROOT)
+OSXL=-arch i386 -arch ppc -syslibroot=$(SDKROOT)
+
+DEFS=-DAPL=1 -fPIC -m32 -fno-stack-protector -DXPLM200 -DHAS_SOCKLEN_T
+XCFLAGS+=-DSNAPSHOT -Wall -I../../dependencies/include -I../../dependencies/include/XPLM -I../../dependencies/include/Widgets -I/usr/local/include $(DEFS) $(OSXC)
+LNFLAGS+=-undefined warning -flat_namespace  -L../../dependencies/lib  -dynamiclib -shared -rdynamic -nodefaultlibs -m32 -ggdb -L/usr/local/lib  $(OSXL)
+LIBS+=-llua -lm
+
+all: $(TARGET)
+
+.c.o:
+	${CC} ${XCFLAGS} ${CFLAGS} -o $@ -c $<
+	
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGET) $(LNFLAGS) $(OBJECTS) $(LIBS)
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+install: $(TARGET)
+	cp -f $(TARGET) $(PLUGINS)

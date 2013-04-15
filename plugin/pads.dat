@@ -1,0 +1,54 @@
+# Pads have the following format:
+#   PAD Latitude Longitude Heading Model Planet Index Name
+#
+# Latitude, Longitude - location of launch pad on the plane
+# Heading - true heading of the launch pad
+# Model - index of launch pad models (see below)
+# Planet - 0 if launch pad is on Earth, 1 if on Mars
+# Index - short (max 7 symbols) launch pad identifier (name)
+# Name - launch complex name
+
+PAD  28.608200 -080.604000 000 0 0 LC-39A  Kennedy Space Center
+PAD  45.920000  063.342000 000 0 0 #1      Baikonur Cosmodrome
+#PAD  45.966000  063.564000 000 0 0 #31     Baikonur Cosmodrome
+#PAD  45.976000  063.669000 000 0 0 #41     Baikonur Cosmodrome
+#PAD  45.943000  063.653000 000 0 0 #45     Baikonur Cosmodrome
+#PAD  46.074000  062.978000 000 0 0 #81L    Baikonur Cosmodrome
+#PAD  46.071000  062.985000 000 0 0 #81R    Baikonur Cosmodrome
+#PAD  46.081000  062.932000 000 0 0 #90L    Baikonur Cosmodrome
+#PAD  46.080000  062.935000 000 0 0 #90R    Baikonur Cosmodrome
+#PAD  45.951000  063.497000 000 0 0 #109    Baikonur Cosmodrome
+#PAD  45.965000  063.305000 000 0 0 #110L   Baikonur Cosmodrome
+#PAD  45.962000  063.310000 000 0 0 #110R   Baikonur Cosmodrome
+#PAD  46.052000  062.986000 000 0 0 #175    Baikonur Cosmodrome
+#PAD  46.040000  063.032000 000 0 0 #200L   Baikonur Cosmodrome
+#PAD  46.036000  063.038000 000 0 0 #200R   Baikonur Cosmodrome
+#PAD  46.008000  063.305000 000 0 0 #250    Baikonur Cosmodrome
+
+PAD -14.270000 -054.350000 120 0 1 MAR-12  Coprales Chasma
+PAD -14.275000 -054.340000 180 0 1 MAR-18  Coprales Chasma
+PAD -14.280000 -054.330000 270 0 1 MAR-27  Coprales Chasma
+
+
+# Models are numbered sequentially, so please add new ones to the end of list
+#
+# Models have the following format:
+#   MODEL X Y Z Roll Pitch Yaw Flags filename
+#
+# X, Y, Z - offset of docking point. Must be on "ground" level of the platform of
+#           the launch pad, centered to the platform.
+# Angles - rotation of spacecraft around the docking point. Spacecraft will be rotated
+#          into mounting attitude, then pitched up 90 degrees and rotated to pad heading,
+#          and then rotated by these angles
+# Flags - which vehicles can be placed on this launch pad:
+#   1 Small rockets
+#   2 Medium rockets
+#   4 Big rockets
+#   8 Shuttles
+#
+# Local coordinate system used is:
+#   X+ fwd  Y+ left   Z+ up
+#   X- aft  Y- right  Z- down
+
+MODEL -11  -2  14  180 000 000 15 shuttle_launchpad.obj
+MODEL   0   0   0  000 000 000 15  rocket_launchpad.obj

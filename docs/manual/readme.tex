@@ -1,0 +1,170 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[a4paper,twoside,12pt]{report}
+\documentclass{article}
+\usepackage[left=3cm,top=3cm,bottom=3cm,right=3cm,nofoot]{geometry}
+% Alternative Options:
+%	Paper Size: a4paper / a5paper / b5paper / letterpaper / legalpaper / executivepaper
+% Duplex: oneside / twoside
+% Base Font Size: 10pt / 11pt / 12pt
+\usepackage{fullpage}
+
+
+%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage{lmodern}
+
+\usepackage{ifthen}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+\usepackage{setspace}
+%\onehalfspacing
+\singlespacing
+
+%\usepackage{a4wide} %%Smaller margins = more text per page.
+%\usepackage{fancyhdr} %%Fancy headings
+%\usepackage{pst-all}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{verbatim}
+
+\newcommand{\reg}[1]{\texttt{#1}}
+\renewcommand{\labelitemi}{$\triangleright$}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagestyle{plain} %Now display headings: headings / fancy / ...
+
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{X-Space (release 7)}
+
+X-Space is an aerospace simulator based on X-Plane flight simulator. It is available as a plugin, and as a dedicated server (for calculating spaceflight), also as an Orbiter space simulator addon (to provide networking).
+
+\section{Features}
+(new features in \textbf{bold})
+
+\begin{itemize}
+  \item \textbf{Provides information about partial concentrations and densities of atmospheric gases}
+  \item \textbf{Clouds visible from orbit (procedural clouds based on realtime weather)}
+  \item \textbf{Different visual effects based on fuel used in the rocket engine}
+  \item \textbf{Detailed engine performance simulation (variation in thrust with external pressure)}
+  \item \textbf{Support for multiple stages/multi-part vessels}
+  \item \textbf{Visual effects from heating (glow due to heat radiation)}
+  \item \textbf{Earth gravitational field simulation (non-spherical gravity based on EGM96 model)}
+  \item \textbf{Support for extra fuel tanks (or additional weights)}
+  \item Orbital flight simulation (uses custom physics engine to override X-Plane physics at high altitudes)
+  \item Detailed atmospheric model (including exosphere, high-altitude atmospheric drag)
+  \item Atmospheric scattering visible from orbit (for X-Plane 9, X-Plane 10 without HDR)
+  \item Support for any amount of custom engines (reaction control engines, additional rocket engines)
+  \item Advanced networking support (multiplayer)
+  \item Fuselage drag simulation (drag from capsules, hypersonic vessels)
+  \item Heating simulation (covers a wide range of external pressures and velocities)
+  \item Earth magnetic field simulation (fairly precise magnetic field data from WMM)
+  \item Material simulation (simulates properties of various materials the spacecraft is constructed from)
+  \item Extra camera views (relative to vessel reference point, vessel center of mass)
+  \item Vertical launch pads
+  \item Simulates planet rotation
+  \item Publishes a large amount of variables (datarefs) accessible by other plugins
+\end{itemize}
+
+\twocolumn
+
+\section{Installing}
+\textbf{Please remove the old version of X-Space if it's present}
+
+Just copy contents of folders in this archive into corresponding folders in X-Plane 9 (or X-Plane 10) folder. The folders must be \textit{merged} together (not replaced!).
+
+To uninstall it just delete the following folders:
+\begin{itemize}
+  \item \reg{$\backslash$X-Plane 9$\backslash$Resources$\backslash$plugins$\backslash$x-space}
+  \item \reg{$\backslash$X-Plane 9$\backslash$Aircraft$\backslash$XSAG}
+\end{itemize}
+
+\section{Authorship}
+\begin{itemize}
+  \item \textbf{X-Space} \copyright \  2009-2012 by Black Phoenix
+  \item \textbf{XGDC OS} \copyright \ 2008-2012  by Black Phoenix
+  \item \textbf{Simple OGL Image Library} by Jonathan Dummer
+  \item \textbf{Scriptable Avionics Simulation Library} by A.A.Babichev
+  \item \textbf{Lua 5.1.4} \copyright \ 1994-2011 PUC-Rio
+  \item \textbf{WMM model} implementation by Manoj C Nair and Adam Woods
+  \item \textbf{NRLMSISE-00 model} implementation by Dominik Brodowski
+  \item \textbf{RV-550 Ares-1} with \textbf{Orion} capsule model by Curt Boyll
+%  \item \textbf{RV-560 Zenit} with \textbf{Orion} capsule model by Curt Boyll and Black Phoenix
+  \item \textbf{SV-200 UHLSS} model by Jeff Scott
+\end{itemize}
+
+\section{Version Information}
+\begin{itemize}
+  \item X-Space (release 7b)
+  \item RV-550 Ares-1/Orion (XSAG SVN R326)
+%  \item RV-560 Zenit/Orion (XSAG SVN R326)
+  \item SV-200 UHLSS (XSAG SVN R326)
+  \item XGDC OS (XSAG SVN R326)
+  \item WMM (WMM2010)
+\end{itemize}
+
+\section{Version History}
+\subsection{Changes from release 7a}
+\begin{itemize}
+  \item Fixed Mac OS version of the plugin
+\end{itemize}
+
+\subsection{Changes from release 6a}
+\begin{itemize}
+  \item Added new rendering features
+  \item Added non-spherical gravity
+  \item Added configuration window
+  \item Can use ACF files as stages now
+  \item No longer supports weapons as drop-stages
+  \item Rewritten from scratch internally
+\end{itemize}
+
+\subsection{Changes from release 5a}
+\begin{itemize}
+  \item Fixed accelerometer readings when in inertial physics
+  \item Fixed Earth rotation pushing aircraft around runway
+  \item Added material editor (for making drag model)
+  \item Added SV-201 vehicle (as a demonstration)
+  \item Added on-orbit drag
+\end{itemize}
+
+\subsection{Changes from release 4d}
+\begin{itemize}
+  \item Added multiplayer
+  \item Fixed memory related crash when loading aircraft after loading rocket
+  \item Fixed unresponsive controls when loading aircraft after loading rocket
+  \item Fixed rocket start with "don't start with engines running" option
+  \item Added datarefs to check for existance of any body
+\end{itemize}
+
+\section{Reference}
+\subsection{Extra key functions}
+\begin{itemize}
+  \item \reg{SHIFT+]}: Locked-orientation spot around vehicle
+  \item \reg{SHIFT+[}: Spot camera around vehicle
+  \item \reg{CTRL+LEFT}: Previous object (cameras)
+  \item \reg{CTRL+RIGHT}: Next object (cameras)
+  \item \reg{SPACE}: Release vessel from launch pad
+\end{itemize}
+
+%== Menu options ==
+%=== Configure plugin ===
+%=== Start multiplayer session... ===
+%=== End multiplayer session... ===
+%=== Edit mount offsets... ===
+%=== Edit hull... ===
+%=== Heating simulation ===
+%=== Materials database ===
+
+\end{document}
+

@@ -1,0 +1,106 @@
+\twocolumn
+\onehalfspacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{General Description}
+The flight can be automated using the on-board programmable event controller. The event controller state can be verified using \reg{PROGRAM} MFD screen. Command entry is performed using the command entry keypad.
+
+The programmable event controller allows one to specify a certain command to be executed when certain event is reached. The command is specified as a three-digit hexadecimal number, which may be followed by a single parameter.
+
+Commands are entered using the keyboard. To enter the next command, you need to push \reg{+} key (\reg{-} key will go back one step). After entering the commands into the computer press "EXEC".
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Command Format}
+First digit specifies what event must trigger the command:
+\begin{center} \begin{tabular}{|c|p{2.4in}|} \hline 
+Digit & Timer name \\ \hline 
+\reg{0} & Never trigger \\ \hline 
+\reg{1} & At perigee \\ \hline 
+\reg{2} & At apogee \\ \hline 
+\reg{3} & When entering atmosphere \\ \hline 
+\reg{4} & When reentry burn must be made \\ \hline 
+\reg{5} & Using custom timer \\ \hline 
+\reg{6} & Nearest perigee or apogee \\ \hline 
+\reg{F} & Execute event as soon as possible \\ \hline 
+\end{tabular} \end{center}
+
+\textbf{Note:} after second stage separation the apogee timer (\reg{2}) will always precede perigee. If the spacecraft detaches from second stage past actual apogee the apogee timer will be reset to 2 minutes.
+
+Second digit switches autopilot mode or selects special command:
+\begin{center} \begin{tabular}{|c|p{2.4in}|} \hline 
+Digit & Autopilot mode \\ \hline 
+\reg{0} & Disable autopilot \\ \hline 
+\reg{1} & KILL ROT (removes rotation) \\ \hline 
+\reg{2} & ATT PRO (prograde attitude) \\ \hline 
+\reg{3} & ATT RET (retrograde attitude) \\ \hline 
+\reg{4} & AUTO (automatic attitude) \\ \hline
+\reg{F} & Do not change mode, execute a special command \\ \hline 
+\end{tabular} \end{center}
+
+Attitude command will be issued 5 minutes prior to event trigger time.
+
+The automatic attitude will be set according to the following logic:
+\begin{center} \begin{tabular}{|p{2.4in}|c|} \hline 
+Reason & Mode \\ \hline 
+Target burn \reg{2 SMA TRANS}, spacecraft approaches apogee, target altitude higher than perigee & \reg{ATT PRO} \\ \hline 
+Target burn \reg{2 SMA TRANS}, spacecraft approaches apogee, target altitude lower than perigee & \reg{ATT RET} \\ \hline 
+Target burn \reg{2 SMA TRANS}, spacecraft approaches perigee, target altitude higher than apogee & \reg{ATT PRO} \\ \hline 
+Target burn \reg{2 SMA TRANS}, spacecraft approaches perigee, target altitude lower than apogee & \reg{ATT RET} \\ \hline 
+\end{tabular} \end{center}
+
+If second digit is not \reg{F}, then third digit indicates burn type, otherwise it's a special command:
+\begin{center} \begin{tabular}{|c|p{2.4in}|} \hline 
+Digit & Burn type \\ \hline 
+\reg{x0} & Specific delta-V (parameter in $\dfrac{m}{s}$) \\ \hline 
+\reg{x1} & Delta-v to enter atmosphere \\ \hline 
+\reg{x2} & Semimajor transfer burn (parameter in $km$) \\ \hline 
+\reg{xF} & Do not do any burn \\ \hline
+\reg{F0} & Set custom timer (parameter in seconds) \\ \hline
+\reg{F1} & Drop third stage (security code is \reg{7193}) \\ \hline
+\end{tabular} \end{center}
+
+Semimajor transfer burn (\reg{SMA TRANS}) is used to change orbital elements. The parameter passed to this event is the target height of the apogee or perigee.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\onecolumn
+\section{Controlling Internal Variables}
+It is possible to adjust current flight program of the guidance computer. To change a variable the \reg{ITEM} button must be pressed, followed by index of the variable, a value sign (\reg{+} or \reg{-}), and the target value for this variable.
+
+These are the variables that can be adjusted:
+\begin{center} \begin{tabular}{|c|c|p{4.5in}|} \hline 
+Index & Default & Description \\ \hline 
+\reg{1} & -0.50 & Phi (angle at which the spacecraft will reenter atmosphere, typically between -0.2 and -2.5) \\ \hline 
+\reg{2} & Undefined & Target landing site latitude \\ \hline 
+\reg{3} & Undefined & Target landing site longitude \\ \hline 
+\reg{4} & 250 & Target apogee (for the initial ascent guidance), in km \\ \hline 
+\reg{5} & -10 & Target perigee (for the initial ascent guidance), in km \\ \hline 
+\reg{6} & 45 & Target inclination in degrees \\ \hline 
+\reg{7} & 135 & Target true anomaly (180 ends guidance at apogee, 135 will end guidance slightly prior to apogee) \\ \hline 
+\reg{8} & 120 & Altitude of the entry interface (what the guidance system considers to be edge of atmosphere), in km \\ \hline 
+\end{tabular} \end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Command Reference}
+
+This section lists most common and useful commands for the event controller.
+
+\begin{center} \begin{tabular}{|l|p{5.0in}|} \hline 
+Command & Description \\ \hline 
+\reg{000} & Clears currently entered command \\ \hline
+
+\reg{431} & Reentry burn (reentry for the selected region of the planet) \\ \hline
+\reg{220 12} & Increase velocity by 12 $\frac{m}{s}$ at apogee) \\ \hline
+\reg{FF1 600} & Set custom timer to 600 seconds (10 minutes) \\ \hline
+\reg{50F} & Reset autopilot to \reg{IDLE} after custom timer expires \\ \hline
+\reg{222 230} & Enter orbit, increase perigee to 230 km \\ \hline
+
+\reg{3F1 7193} & Detach service module at entry interface \\ \hline
+\reg{342 567} twice & Make the orbit circular at altitude of approximately 567 km (may not be possible due to non-spherical Earth) \\ \hline
+\reg{ITEM 1 -1.00} & Set target re-entry angle to -1.0 degrees \\ \hline
+
+\end{tabular} \end{center}

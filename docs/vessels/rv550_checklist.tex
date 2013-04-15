@@ -1,0 +1,143 @@
+\twocolumn
+\singlespacing
+
+
+\renewcommand{\labelitemi}{$\Box$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ascent Checklists}
+\paragraph{Ascent to a pre-configured orbit}~
+\begin{itemize}
+	\item Push \reg{SRB IGNT}
+	\item The rocket will execute guidance automatically
+	\item Go to \textbf{Entry to orbit} checklist
+\end{itemize}
+
+\paragraph{Ascent to a custom orbit}~
+\begin{itemize}
+  \item Push buttons on MFD to adjust target apogee, inclination
+	\item Push \reg{SRB IGNT}
+	\item The rocket will execute guidance automatically
+	\item Go to \textbf{Entry to orbit} checklist
+\end{itemize}
+
+\paragraph{Programmed ascent}~
+\begin{itemize}
+  \item In this checklist apogee is 456 km, perigee is 234 km. Replace values in checklist with target orbital elements
+  \item Select \reg{PROGRAM} MFD screen
+  \item Use \reg{+} and \reg{-} buttons to select program item 1
+  \item Enter via keypad \reg{222 456} (456 km)
+  \item Press \reg{EXEC}
+  \item Press \reg{+}
+  \item Enter via keypad \reg{642 234} (234 km)
+  \item Press \reg{EXEC}
+  \item Push \reg{SRB IGNT}
+  \item Go to \textbf{Orbital manuevering (automatic)} checklist
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{On-orbit Checklists}
+\paragraph{Entry to orbit (manual)}~
+\begin{itemize}
+  \item Wait until stage 2 burns out
+	\item If \reg{RCS ON} button not lit: push \reg{RCS ON} to enable reaction control system
+	\item Push \reg{ATT PRO}
+	\item Verify that spacecraft is in flightmode 32 (\reg{ATT PRO} button lit)
+	\item Wait until spacecraft stops adjusting attitude
+	\item Verify that throttle is set to 0\%
+	\item Push \reg{ORB ENGN} button to arm orbital manuevering
+	\item Verify that \reg{ORB ENGN} is lit, and is not flashing
+	\item If \reg{ORB ENGN} button is flashing, set throttle to 0
+	\item Wait until spacecraft reaches apogee, or is past apogee
+	\item Increase throttle to 100\%
+	\item Wait until target orbital parameters are reached
+	\item Throttle back to 0\%
+	\item Push \reg{ORB ENGN} button to disarm orbital manuevering
+	\item Verify that \reg{ORB ENGN} button is not lit
+	
+	\item If additional orbital manuevering is required, go to \textbf{Orbital manuevering} checklists
+\end{itemize}
+
+\paragraph{Entry to orbit (automatic)}~
+\begin{itemize}
+  \item Wait until stage 2 burns out
+  \item Select \reg{PROGRAM} MFD screen
+  \item Use \reg{+} and \reg{-} buttons to select program item 1
+  \item Enter via keypad \reg{222 234} (for a target perigee of 234 km)
+  \item Press \reg{EXEC}  
+\end{itemize}
+
+
+\paragraph{Orbital manuevering (manual)}~
+\begin{itemize}
+	\item Verify that throttle is set to 0\%
+	\item Push \reg{ORG ENGN} button to arm orbital manuevering
+	\item Verify that \reg{ORB ENGN} is lit, and is not flashing
+	\item If \reg{ORB ENGN} button is flashing, set throttle to 0
+	\item Increase throttle to 100\%
+	\item Wait until target orbital parameters are reached
+	\item Throttle back to 0\%
+	\item Push \reg{ORB ENGN} button to disarm orbital manuevering
+	\item Verify that \reg{ORB ENGN} button is not lit
+\end{itemize}
+
+\paragraph{Orbital manuevering (automatic)}~
+\begin{itemize}
+  \item Enter corresponding command into the on-board event programmer
+  \item Press \reg{EXEC}
+\end{itemize}
+
+\paragraph{Orbital manuever: change perigee (auto)}~
+\begin{itemize}
+  \item Enter via keypad \reg{242 234} (for a target perigee of 234 km)
+  \item Press \reg{EXEC}  
+\end{itemize}
+
+\paragraph{Orbital manuever: change apogee (auto)}~
+\begin{itemize}
+  \item Enter via keypad \reg{142 234} (for a target apogee of 234 km)
+  \item Press \reg{EXEC}  
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Re-entry Checklists}
+\paragraph{Ballistic reentry (manual)}~
+\begin{itemize}
+  \item Execute \textbf{Orbital manuevering} checklists to place vessel at altitude of 150 km or higher
+  \item Push \reg{ATT RET}
+  \item Verify that spacecraft orients against velocity vector
+  \item Execute de-orbit burn until entry interface at -1.00 degrees is reached (see \textbf{Orbital manuevering (manual)} checklist)
+  \item Push \reg{DROP ARM}
+  \item Push \reg{DROP STAGE} to separate service module
+  \item Push \reg{ATT RET} to restore autopilot mode
+  \item The spacecraft will execute the rest of the descent automatically      
+\end{itemize}
+
+\paragraph{Ballistic reentry (automatic)}~
+\begin{itemize}
+  \item Execute \textbf{Orbital manuevering} checklists to place vessel at altitude of 150 km or higher
+  \item At least 5 minutes prior to re-entry enter via keypad \reg{431} (execute de-orbit burn)
+  \item Press \reg{EXEC}
+  \item Press \reg{+}
+  \item Enter via keypad \reg{3F1 7193} (detach service module at entry interface)
+  \item Press \reg{EXEC}
+  \item The spacecraft will execute the rest of the descent automatically      
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\labelitemi}{$\bullet$}
+\section{Operation Limitations}
+\begin{itemize}
+  \item Do not reenter with entry interface angle of higher than -0.5 degrees
+  \item Do not reenter with entry interface angle of lower than -2.5 degrees
+  \item Do not descend below entry interface with service module still attached
+  \item Always verify computer state after reboot
+  \item Always disarm orbital engines after use
+  \item Always detach service module before or at entry interface (120 km)
+\end{itemize}
+
+
+\onecolumn

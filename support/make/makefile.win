@@ -1,0 +1,19 @@
+TARGET=win.xpl
+HEADERS=$(wildcard *.h)
+SOURCES=$(wildcard *.c)
+OBJECTS=$(SOURCES:.c=.o)
+
+CC=mingw32-g++
+XCFLAGS+=-Wall -I../Inc/XPLM -I../Inc/CHeaders/Widgets -I../Inc -Imodels -DIBM=1 -DXPLM200
+LNFLAGS=-L$(SDK)/Libraries/Win -Lc:/mingw/sdk/lib -L../libogl
+LIBS=-lxplm -lxpwidgets -llua -lOpenGL32
+
+all: $(TARGET)
+
+.c.o:
+	${CC} ${XCFLAGS} ${CFLAGS} -o $@ -c $<
+
+$(TARGET): $(OBJECTS)
+	dllwrap --dllname=$(TARGET) --driver-name=$(CC) $(OBJECTS) $(LNFLAGS) $(LIBS)
+	strip --strip-all $(TARGET)
+

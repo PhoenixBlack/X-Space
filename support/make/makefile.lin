@@ -1,0 +1,23 @@
+TARGET=../../plugin/lin.xpl
+SOURCES=$(wildcard ../../source/*.c) $(wildcard ../../dependencies/source/*.c)
+OBJECTS=$(SOURCES:.c=.o)
+
+DEFS= -DLIN=1 -fPIC -m32 -fno-stack-protector -DXPLM200 -DHAS_SOCKLEN_T -ggdb
+XCFLAGS+=-Wall -I/usr/include -I../../dependencies/include -I../../dependencies/include/XPLM -I../../dependencies/include/Widgets -I/usr/include/lua5.1 $(DEFS)
+LNFLAGS+=-shared -rdynamic -nodefaultlibs -m32 -ggdb -L/usr/lib32 -L../../dependencies/lib
+LIBS+= -lSOIL -llua -lm
+
+all: $(TARGET)
+
+.c.o:
+	${CC} ${XCFLAGS} ${CFLAGS} -o $@ -c $<
+	
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGET) $(LNFLAGS) $(OBJECTS) $(LIBS)
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+install: $(TARGET)
+	cp -f $(TARGET) $(PLUGINS)
+

@@ -1,0 +1,26 @@
+# American engines
+# Name     Fvac       Fsl   Ivac  Isl  Fuel
+J-2       1.033e6   0.486e6  421  200  LO2-LH2   Saturn V main engine
+J-2X      1.310e6   0.865e6  448  252  LO2-LH2   Constellation EDS
+RS-25     2.279e6   1.860e6  452  363  LO2-LH2   Space Shuttle Main Engines
+SSSRB    11.800e6  14.000e6  268  242  Solid     Space Shuttle SRB
+
+# Russian engines
+# Name     Fvac       Fsl   Ivac  Isl  Fuel
+RD-170    1.980e6   1.815e6  338  309  LO2-RP1   Zenit (Energia)          (4 chambers)
+RD-171    1.980e6   1.815e6  338  309  LO2-RP1   Zenit (1st stage)        (4 chambers)
+RD-171M   1.980e6   1.815e6  337  309  LO2-RP1   Zenit                    (4 chambers)
+RD-172    2.079e6   1.922e6  337  311  LO2-RP1   Vulkan                   (4 chambers)
+RD-175    2.450e6   2.320e6  338  309  LO2-RP1   Energia-K                (4 chambers)
+RD-180    2.075e6   1.915e6  338  311  LO2-RP1   Atlas-3A                 (2 chambers)
+RD-191    2.090e6   1.920e6  337  311  LO2-RP1   Single-chamber RD-170
+RD-151    1.720e6   1.668e6  337  310  LO2-RP1   Derivative of RD-191
+RD-150    2.784e6   2.458e6  340  300  LO2-RP1   Energia rocket (orig.)   (4 chambers)
+RD-0124   294.3e3     250e3  359  331  LO2-RP1   Soyuz-2.1b
+RD-107      991e3     813e3  310  245  LO2-K     R-7 Semyorka
+RD-117   1021.1e3     952e3  310  264  LO2-K     Soyuz-FG
+RD-58      91.0e3    83.4e3  349  315  LO2-K     N1 Block D
+RD-8       78.5e3    68.0e3  342  308  LO2-K     Zenit (2nd stage)
+
+RD-0120   1.961e6   1.517e6  455  359  LO2-LH2   Energia rocket
+RD-0126    98.1e3    72.5e6  463  372  LO2-LH2   Rus-M (2nd stage)
